@@ -58,7 +58,7 @@ function create_favorite(tweet_id) {
   $.ajax({
     type: "GET",
     url: "create_favorite",
-    data: "id"+tweet_id,
+    data: "id="+tweet_id,
     success: function(msg){
       swap_fav_image(tweet_id);
     }
