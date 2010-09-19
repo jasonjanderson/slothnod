@@ -1,3 +1,9 @@
+<?php
+global $user;
+global $js;
+$js->set_js_var('avatar_' . $this->status_id, $this->get_avatar_json());
+?>
+
 <div class="tweet">
   <div class="user-info">
     <a href="<?php print 'http://twitter.com/' . $this->get_username(); ?>" title="@<?php print $this->get_username(); ?>"><img src="<?php print $this->get_img_url(); ?>"></a>
@@ -7,7 +13,11 @@
   </div>
   <?php if (User::is_logged_in()) { ?>
  <div class="tweet-controls">
-  <a id="fav_<?php print $this->status_id; ?>" onclick="create_favorite(<?php print $this->status_id; ?>); return false;"><img src="./images/star_grey.png" height="16" width="16" alt="favorite"></a>
+   <?php if ($this->favorited($user)) { ?>
+   <img class="fav-img" src="./images/star_yellow.png" alt="favorite">
+   <?php } else { ?>
+  <a id="fav_<?php print $this->status_id; ?>" onclick="create_favorite(<?php print $this->status_id; ?>); return false;"><img class="fav-img" src="./images/star_grey.png" height="16" width="16" alt="favorite"></a>
+  <?php } ?>
 </div>
   <?php } ?>
  <div class="avatar-container" id="avatar-container_<?php print $this->status_id; ?>">
@@ -16,7 +26,3 @@
     <?php } ?>
   </div>
 </div>
-<?php 
-global $js;
-$js->set_js_var('avatar_' . $this->status_id, $this->get_avatar_json());
-?>
