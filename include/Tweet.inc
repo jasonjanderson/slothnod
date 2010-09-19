@@ -17,6 +17,7 @@ class Tweet {
     }
     $this->text = $row['text'];
     $this->post_date = $row['post_date'];
+    $this->post_date_unix = $this->convert_datetime($this->post_date);
     $this->leaderboard_date = $row['leaderboard_date'];
     $this->user_id = $row['user_id'];
     $this->username = $row['username'];
@@ -29,6 +30,8 @@ class Tweet {
   public function get_text() { return $this->text; }
 
   public function get_post_date() { return $this->post_date; }
+
+  public function get_post_date_iso8601() { return date('c', $this->post_date_unix); }
 
   public function get_leaderboard_date() { return $this->leaderboard_date; }
 
@@ -68,7 +71,22 @@ class Tweet {
     return array_key_exists($user->get_username(), $this->favorite);
   }
 
+  /*
+   * * Function to turn a mysql datetime (YYYY-MM-DD HH:MM:SS) into a unix timestamp
+   * * @param str
+   * * The string to be formatted
+   * */
 
+  private function convert_datetime($str) {
+
+    list($date, $time) = explode(' ', $str);
+    list($year, $month, $day) = explode('-', $date);
+    list($hour, $minute, $second) = explode(':', $time);
+
+    $timestamp = mktime($hour, $minute, $second, $month, $day, $year);
+
+    return $timestamp;
+  }
 }
 
 ?>
