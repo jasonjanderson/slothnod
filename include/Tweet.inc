@@ -33,6 +33,8 @@ class Tweet {
 
   public function get_post_date_iso8601() { return date('c', $this->post_date_unix); }
 
+  public function get_post_date_pretty() { return date(gmdate(DATE_RFC822), $this->post_date_unix); }
+
   public function get_leaderboard_date() { return $this->leaderboard_date; }
 
   public function get_user_id() { return $this->user_id; }
