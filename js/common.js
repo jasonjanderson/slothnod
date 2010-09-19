@@ -23,7 +23,7 @@ function toggle_avatar(tweet_id, avatar) {
 }
 
 function format_avatar(username, url, expand_avatar) {
-  var img = $("<img/>").attr("src", url).attr("title", username).attr("height", 45).attr("width", 45);
+  var img = $("<img/>").attr("src", url).attr("title", username);
   var link = $("<a>").attr("href", "http://twitter.com/"+username);
   if (expand_avatar == true) {
     link.attr("class", "expand-avatar");
@@ -66,7 +66,7 @@ function create_favorite(tweet_id) {
 }
 
 function swap_fav_image(tweet_id) {
-  var img = $("<img/>").attr("src", "./images/star_yellow.png").attr("height", "16").attr("width", "16");
+  var img = $("<img/>").attr("src", "./images/star_yellow.png").addClass("fav-img");
   $("a#fav_"+tweet_id).replaceWith(img);
 }
 

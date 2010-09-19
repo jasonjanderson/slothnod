@@ -38,7 +38,6 @@ class Tweet {
 
   public function get_img_url() { return $this->img_url; }
 
-
   public function render() {
     include('./html/Tweet.html');
   }
