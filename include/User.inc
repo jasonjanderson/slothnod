@@ -77,6 +77,11 @@ class User {
     return false;
   }
 
+  public static function is_logged_in() {
+    return isset($_SESSION['user']);
+
+  }
+
 
 
 }
