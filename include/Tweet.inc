@@ -65,6 +65,10 @@ class Tweet {
     return $a;
   }
 
+  public function favorited($user) {
+    return array_key_exists($user->get_username(), $this->favorite);
+  }
+
 
 }
 
