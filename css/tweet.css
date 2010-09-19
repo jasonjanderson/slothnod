@@ -7,7 +7,7 @@ div.tweet {
 
 
 div.user-info { float:left; width:60px; }
-div.user-info a img { overflow:hidden; }
+div.user-info a img { overflow:hidden; height:45px; width:45px; }
 
 div.tweet-text {
   font-size:1.5em;
