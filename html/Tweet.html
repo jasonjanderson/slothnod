@@ -5,7 +5,7 @@
   <div class="tweet-text">
     <?php print $this->text; ?>
   </div>
-  <?php if (isset($_SESSION['user'])) { ?>
+  <?php if (User::is_logged_in()) { ?>
  <div class="tweet-controls">
   <a id="fav_<?php print $this->status_id; ?>" onclick="create_favorite(<?php print $this->status_id; ?>); return false;"><img src="./images/star_grey.png" height="16" width="16" alt="favorite"></a>
 </div>
