@@ -1,0 +1,142 @@
+body {
+	margin:0;
+	padding:0;
+	border:0;			/* This removes the border around the viewport in old versions of IE */
+	width:100%;
+	background:#fff;
+	min-width:600px;    	/* Minimum width of layout - remove line if not required */
+					/* The min-width property does not work in old versions of Internet Explorer */
+}
+
+img {
+	margin:10px 0 5px;
+}
+
+/* Header styles */
+#header {
+	clear:both;
+	float:left;
+	width:100%;
+}
+#header {
+	border-bottom:1px solid #000;
+}
+#header p,
+#header h1,
+#header h2 {
+	padding:.4em 15px 0 15px;
+	margin:0;
+}
+/* column container */
+.colmask {
+	position:relative;	/* This fixes the IE7 overflow hidden bug */
+	clear:both;
+	float:left;
+	width:100%;			/* width of whole page */
+	overflow:hidden;		/* This chops off any overhanging divs */
+}
+/* common column settings */
+.colright,
+.colmid,
+.colleft {
+	float:left;
+	width:100%;
+	position:relative;
+}
+.col1,
+.col2,
+.col3 {
+	float:left;
+	position:relative;
+	padding:0 0 1em 0;
+	overflow:hidden;
+}
+/* 2 Column (left menu) settings */
+.leftmenu {
+	background:#fff;		/* right column background colour */
+}
+.leftmenu .colleft {
+	right:75%;			/* right column width */
+	background:#f4f4f4;	/* left column background colour */
+}
+.leftmenu .col1 {
+	width:71%;			/* right column content width */
+	left:102%;			/* 100% plus left column left padding */
+}
+.leftmenu .col2 {
+	width:21%;			/* left column content width (column width minus left and right padding) */
+	left:6%;			/* (right column left and right padding) plus (left column left padding) */
+}
+/* Footer styles */
+#footer {
+	clear:both;
+	float:left;
+	width:100%;
+	border-top:1px solid #000;
+}
+#footer p {
+	padding:10px;
+	margin:0;
+}
+
+/* Main menu settings */
+#centeredmenu {
+	clear:both;
+	float:left;
+	margin:0;
+	padding:0;
+	border-bottom:1px solid #000; /* black line below menu */
+	width:100%;
+	font-family:Verdana, Geneva, sans-serif; /* Menu font */
+	font-size:90%; /* Menu text size */
+	z-index:1000; /* This makes the dropdown menus appear above the page content below */
+	position:relative;
+}
+
+/* Top menu items */
+#centeredmenu ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+	float:right;
+	position:relative;
+	right:50%;
+}
+#centeredmenu ul li {
+	margin:0 0 0 1px;
+	padding:0;
+	float:left;
+	position:relative;
+	list-style-type:none;
+	left:50%;
+	top:1px;
+}
+#centeredmenu ul li a {
+	display:block;
+	margin:0;
+	padding:.6em .5em .4em;
+	font-size:1em;
+	line-height:1em;
+	background:#ddd;
+	text-decoration:none;
+	color:#444;
+	font-weight:bold;
+	border-bottom:1px solid #000;
+}
+#centeredmenu ul li.active a {
+	color:#fff;
+	background:#000;
+}
+#centeredmenu ul li a:hover {
+	background:#36f; /* Top menu items background colour */
+	color:#fff;
+	border-bottom:1px solid #03f;
+}
+
+#centeredmenu ul li:hover a,
+#centeredmenu ul li.hover a { /* This line is required for IE 6 and below */
+	background:#36f; /* Top menu items background colour */
+	color:#fff;
+	border-bottom:1px solid #03f;
+}
+

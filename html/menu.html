@@ -1,0 +1,7 @@
+<?php require_once("./include/menu.php"); ?>
+<div id="centeredmenu">
+  <ul>
+    <?php print get_menu_item($title="About", $link="./about", $active="about"); ?>
+    <?php print get_menu_item($title="Leaderboard", $link="./", $active="index"); ?>
+  </ul>
+</div>

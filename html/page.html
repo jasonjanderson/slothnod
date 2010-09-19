@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
+<head>
+  <title><?php if (isset($head_title)) { print $head_title; }?></title>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="robots" content="index, follow" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<!--  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.1/build/cssreset/reset.css">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.1/build/cssfonts/fonts.css">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.1/build/cssbase/base.css">
+  -->
+  <link rel="stylesheet" href="http://yui.yahooapis.com/3.2.0/build/cssreset/reset.css" type="text/css"> 
+  <link rel="stylesheet" href="http://yui.yahooapis.com/3.2.0/build/cssfonts/fonts.css" type="text/css"> 
+  <link rel="stylesheet" href="http://yui.yahooapis.com/3.2.0/build/cssbase/base.css" type="text/css"> 
+  <link rel="stylesheet" type="text/css" href="./css/screen.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./css/pagination.css">
+  <link rel="stylesheet" type="text/css" href="./css/tweet.css">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/jquery.timeago.js"></script>
+
+</head>
+<body link="blue" alink="blue" vlink="blue">
+  <div id="header">
+    <?php print $header; ?>
+  </div>
+  <div class="colmask leftmenu">
+    <div class="colleft">
+      <div class="col1">
+        <!-- Column 1 start -->
+        <?php print $body_contents; ?>
+        <!-- Column 1 end -->
+      </div>
+      <div class="col2">
+        <!-- Column 2 start -->
+        <!-- Column 2 end -->
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <p></p>
+  </div>
+</body>
+<?php print $js->get_all_js_var(); ?>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16992431-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</html>

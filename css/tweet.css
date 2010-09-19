@@ -1,0 +1,29 @@
+div.tweet {
+  padding: 10px;
+  border-style:solid;
+  border-width:thin;
+  border-color:#F4F4F4;
+}
+
+
+div.user-info { float:left; width:60px; }
+div.user-info a img { overflow:hidden; }
+
+div.tweet-text {
+  font-size:1.5em;
+  width:100%;
+}
+
+div.anonymous-tweet-text {
+  padding: 0px 0px 2px 60px;
+  clear:both;
+}
+  
+div.tweet-controls { float:right; }
+
+div.avatar-container { padding: 0px 0px 2px 65px; clear:both; }
+div.avatar-img a img {
+  border: 0;
+  overflow: hidden;
+}
+
