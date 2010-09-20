@@ -1,4 +1,5 @@
 <?php
+require_once('./include/Date.inc');
 
 class Tweet {
   protected $status_id;
@@ -30,6 +31,10 @@ class Tweet {
   public function get_text() { return $this->text; }
 
   public function get_post_date() { return $this->post_date; }
+
+  public function get_post_date_unix() { return $this->post_date_unix; }
+
+  public function get_post_date_fuzzy() { return Date::fuzzy_time_ago(mktime() - $this->post_date_unix); }
 
   public function get_post_date_iso8601() { return date('c', $this->post_date_unix); }
 
