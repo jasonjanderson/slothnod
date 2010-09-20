@@ -11,12 +11,12 @@ function init() {
   global $session;
   global $user;
 
+  init_maintenance_mode();
+  init_error_reporting($state);
   $db = new mysql();
   $js = new JavaScript();
   $session = new Session();
 
-
-  init_error_reporting($state);
   if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
   }
@@ -32,6 +32,15 @@ function init_error_reporting($state) {
     case 'development':
       error_reporting(E_ALL);
       @ini_set(‘display_errors’, 1);
+  }
+}
+
+function init_maintenance_mode() {
+  if (IN_MAINTENANCE_MODE) {
+    if (!isset($_GET['bypass'])) {
+      include('./html/maintenance.html');
+      exit;
+    }
   }
 }
 
