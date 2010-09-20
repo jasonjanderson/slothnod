@@ -12,7 +12,8 @@ settype($id, 'integer');
 
 /* Create a TwitterOauth object with consumer/user tokens. */
 $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $user->get_oauth_token(), $user->get_oauth_secret());
-
 $response = $connection->post("favorites/create/$id");
+$user->create_favorite($id);
+
 
 ?>

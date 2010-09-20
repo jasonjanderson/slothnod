@@ -31,6 +31,16 @@ class User {
   public function get_oauth_token() { return $this->oauth_token; }
   public function get_oauth_secret() { return $this->oauth_secret; }
 
+
+  public function create_favorite($id) {
+    global $db;
+
+    $sql = "INSERT IGNORE INTO favorite (status_id, user_id, favorite_date)
+      VALUES ('%status_id%', '%user_id%', UTC_TIMESTAMP());";
+    $db->query($sql, array('status_id' => $id, 'user_id' => $this->get_id()));
+  }
+ 
+
   public static function valid_user($user) {
     # Change when out of beta
     return ((!User::is_excluded($user)) && User::is_included($user));
@@ -81,8 +91,6 @@ class User {
     return isset($_SESSION['user']);
 
   }
-
-
 
 }
 ?>
