@@ -94,7 +94,7 @@ class Session {
   }
 
   private function clean($expire) {
-    $q = "DELETE FROM `sessions` WHERE DATE_ADD(`sesh_last_accessed`, INTERVAL ".(int) $expire." SECOND) < NOW()"; 
+    $q = "DELETE FROM `sessions` WHERE DATE_ADD(`last_accessed`, INTERVAL ".(int) $expire." SECOND) < NOW()"; 
     $this->dbc->query($q);
 
     return $this->dbc->affected_rows;
