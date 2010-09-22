@@ -29,8 +29,9 @@ class Date {
       }
       return 'about ' . round($days) . ' days ago';
     }
-    return 'about ' round($years) . ' years ago';
+    return 'about ' .round($years) . ' years ago';
   }
+
 }
 ?>
 
