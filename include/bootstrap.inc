@@ -12,7 +12,8 @@ function init() {
   global $user;
 
   init_maintenance_mode();
-  init_error_reporting($state);
+  init_error_reporting(STATE);
+  date_default_timezone_set('UTC');
   $db = new mysql();
   $js = new JavaScript();
   $session = new Session();
@@ -26,12 +27,12 @@ function init_error_reporting($state) {
   switch ($state) {
     case 'production':
       error_reporting(0);
-      @ini_set(‘display_errors’, 0);
+      @ini_set('display_errors', 0);
       break;
 
     case 'development':
       error_reporting(E_ALL);
-      @ini_set(‘display_errors’, 1);
+      @ini_set('display_errors', 1);
   }
 }
 
