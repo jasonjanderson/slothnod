@@ -5,7 +5,7 @@ $js->set_js_var('avatar_' . $this->status_id, $this->get_avatar_json());
 ?>
 
 <div class="tweet">
-  <div class="anonymous-tweet-text tweet-text">
+  <div class="tweet-text">
     <?php print $this->text; ?>
   </div>
   <?php if (User::is_logged_in()) { ?>
