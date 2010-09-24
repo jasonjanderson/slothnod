@@ -1,5 +1,5 @@
 <?php
 
-$session->delete();
-header('Location: ./leaderboard');
+$session->stop();
+header('Location: ./');
 ?>
