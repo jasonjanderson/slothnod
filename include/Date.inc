@@ -3,7 +3,7 @@ class Date {
   public static function fuzzy_time_ago($seconds) {
     $minutes = $seconds / 60;
     if (round($minutes) <= 1) {
-      if ($round($minutes) == 1) {
+      if (round($minutes) == 1) {
         return 'a minute ago';
       }
       return 'less than a minute ago';
