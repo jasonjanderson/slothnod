@@ -18,7 +18,7 @@ $sql = "SELECT SQL_CALC_FOUND_ROWS leaderboard.status_id,
 		leaderboard.username,
 		leaderboard.img_url FROM leaderboard ORDER BY leaderboard.leaderboard_date DESC";
 
-$pagination = new Pagination($connection=$db->get_connection(), $sql=$sql, $rows_per_page=10, $num_adjacent=3);
+$pagination = new Pagination($connection=$db->get_connection(), $sql=$sql, $rows_per_page=50, $num_adjacent=3);
 $result = $pagination->get_result();
 $leaderboard = new LeaderBoard($result);
 include('./html/leaderboard.html');
