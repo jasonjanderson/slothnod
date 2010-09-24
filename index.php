@@ -19,7 +19,7 @@ ob_start();
 switch ($route) {
 
   case 'index':
-    $head_title="SlothNod - Leaderboard";
+    $head_title="SlothNod - Nod Board";
     include('./leaderboard.php');
     break;
 
@@ -29,7 +29,7 @@ switch ($route) {
     break;
 
   case 'leaderboard':
-    $head_title="SlothNod - Leaderboard";
+    $head_title="SlothNod - Nod Board";
     include('./leaderboard.php');
     break;
 
