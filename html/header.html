@@ -1,9 +1,11 @@
-<p align="right">
-<?php if (isset($user)) { ?>
+<div id="header-login">
+<?php if (User::is_logged_in()) { ?>
 Signed in as <a href="http://twitter.com/<?php echo $user->get_username(); ?>">@<?php echo $user->get_username(); ?></a>  (<a href="./signout">Sign out</a>)
 <?php } else { ?>
-<a href="./redirect"><img src="./images/signin.png" alt="Sign in with Twitter"/></a>
+<a href="./join"><img src="./images/signin.png" alt="Sign in with Twitter"/></a>
 <?php } ?>
-</p>
-<p><a href="/"><img src="./images/thesloth.jpg" \></a></p>
+</div>
+<div id="header-logo">
+<a href="/"><img src="./images/thesloth.jpg" \></a>
+</div>
 <?php include("./html/menu.html"); ?>

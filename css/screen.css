@@ -8,10 +8,6 @@ body {
 					/* The min-width property does not work in old versions of Internet Explorer */
 }
 
-img {
-	margin:10px 0 5px;
-}
-
 /* Header styles */
 #header {
 	clear:both;
@@ -27,6 +23,10 @@ img {
 	padding:.4em 15px 0 15px;
 	margin:0;
 }
+#header-logo { float:left; }
+#header-login { float:right; font-size:1.25em; padding:15px 15px 15px 15px; }
+
+
 /* column container */
 .colmask {
 	position:relative;	/* This fixes the IE7 overflow hidden bug */
