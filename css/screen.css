@@ -139,7 +139,29 @@ background:#fff;		/* right column background colour */
 	color:#fff;
 	border-bottom:1px solid #03f;
 }
+a.button {
+font-family: 'Yanone Kaffeesatz', arial, serif;
+font-size:30px;
+color:#000;
+text-decoration:none;
+display:block;
+width:478px;
+padding:10px;
+border:1px solid #DDD;
+text-align:center;
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+-o-border-radius:5px;
+border-radius:5px;
 
+color:#fff;
+border-color:#3278BE;
+background:#4195DD;
+background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4195DD), to(#003C82));
+background:-moz-linear-gradient(0% 90% 90deg, #003C82, #4195DD);
+cursor:pointer;
+}
+/*
 a.button {
 font-family: 'Yanone Kaffeesatz', arial, serif;
 font-size:30px;
@@ -171,3 +193,4 @@ a.button.notransitions {
 -o-transition: none;
 transition: none;
 }
+  */
