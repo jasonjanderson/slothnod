@@ -2,7 +2,7 @@
 <?php if (User::is_logged_in()) { ?>
 Signed in as <a href="http://twitter.com/<?php echo $user->get_username(); ?>">@<?php echo $user->get_username(); ?></a>  (<a href="./signout">Sign out</a>)
 <?php } else { ?>
-<a href="./join"><img src="./images/signin.png" alt="Sign in with Twitter"/></a>
+<a href="./signin"><img src="./images/signin.png" alt="Sign in with Twitter"/></a>
 <?php } ?>
 </div>
 <div id="header-logo">
