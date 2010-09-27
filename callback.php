@@ -1,6 +1,10 @@
 <?php
 require_once('./include/oauth/twitteroauth.php');
 
+if (isset($_REQUEST['denied'])) {
+  $session->stop();
+  header('Location: ./');
+}
 /* If the oauth_token is old redirect to the connect page. */
 
 if (isset($_REQUEST['oauth_token']) && $_SESSION['oauth_token'] !== $_REQUEST['oauth_token']) {
@@ -25,7 +29,6 @@ $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oau
 
 /* If method is set change API call made. Test is called by default. */
 $userinfo = $connection->get('account/verify_credentials');
-
 $user = new User(
   $id = $userinfo->{'id'},
   $username = $userinfo->{'screen_name'},
@@ -36,12 +39,11 @@ $user = new User(
   $oauth_secret = $access_token['oauth_token_secret']
 );
 
-# Verify that the user is allowed to use Slothnod
 if (!User::valid_user($user)) {
   include('./html/deny_user.html');
 } else {
   User::db_add($user);
+  $session->regenerate_id();
   $_SESSION['user'] = $user;
-  $session->regenerate_session_id();
   header('Location: ./');
 }
