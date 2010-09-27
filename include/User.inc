@@ -43,7 +43,7 @@ class User {
 
   public static function valid_user($user) {
     # Change when out of beta
-    return ((!User::is_excluded($user)) && User::is_included($user));
+    return (!User::is_excluded($user));
   }
 
   public static function db_add($user) {
