@@ -8,7 +8,9 @@ if (isset($_REQUEST['denied'])) {
 /* If the oauth_token is old redirect to the connect page. */
 
 if (isset($_REQUEST['oauth_token']) && $_SESSION['oauth_token'] !== $_REQUEST['oauth_token']) {
-  $_SESSION['oauth_status'] = 'oldtoken';
+/*  $_SESSION['oauth_status'] = 'oldtoken';
+*/
+  $session->stop();
   header('Location: ./');
 }
 
