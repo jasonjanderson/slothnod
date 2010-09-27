@@ -20,7 +20,7 @@ switch ($route) {
 
   case 'index':
     $head_title="SlothNod - Nod Board";
-    include('./leaderboard.php');
+    include('./nodboard.php');
     break;
 
   case 'about':
@@ -28,13 +28,17 @@ switch ($route) {
     include('./html/about.html');
     break;
 
-  case 'leaderboard':
+  case 'nodboard':
     $head_title="SlothNod - Nod Board";
-    include('./leaderboard.php');
+    include('./nodboard.php');
     break;
 
   case 'redirect':
     include('./redirect.php');
+    break;
+
+  case 'signin':
+    include('./html/signin.html');
     break;
 
 

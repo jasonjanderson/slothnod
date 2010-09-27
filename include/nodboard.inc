@@ -2,9 +2,9 @@
 require_once('./include/Tweet.inc');
 require_once('./include/AnonymousTweet.inc');
 
-class LeaderBoard {
+class NodBoard {
   private $result;
-  protected $leaderboard = array();
+  protected $nodboard = array();
   protected $status_id = array();
 
   public function __construct($result) {
@@ -16,10 +16,10 @@ class LeaderBoard {
      while ($row = mysql_fetch_assoc($this->result)) {
       if ($this->is_anonymous($row)) {
         $tweet = new AnonymousTweet($row);
-        array_push($this->leaderboard, $tweet);
+        array_push($this->nodboard, $tweet);
       } else {
         $tweet = new Tweet($row);
-        array_push($this->leaderboard, $tweet);
+        array_push($this->nodboard, $tweet);
       }
       array_push($this->status_id, $tweet->get_status_id());
     }
@@ -30,14 +30,14 @@ class LeaderBoard {
   }
 
   public function render() {
-    foreach ($this->leaderboard as $tweet) {
+    foreach ($this->nodboard as $tweet) {
       $tweet->render();
     }
   }
 
   public function get_avatar_json() {
     $a = array();
-    foreach ($this->leaderboard as $tweet) {
+    foreach ($this->nodboard as $tweet) {
       $a[$tweet->get_status_id()] = $tweet->get_avatar_array();
     }
     return json_encode($a);

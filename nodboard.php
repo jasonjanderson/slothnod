@@ -1,8 +1,8 @@
 <?php
 require_once('./include/Pagination.inc');
-require_once('./include/LeaderBoard.inc');
+require_once('./include/nodboard.inc');
 
-global $leaderboard, $js;
+global $nodboard, $js;
 
 if (isset($_GET['p'])) {
 	$page = (int)$_GET['p'];
@@ -20,8 +20,8 @@ $sql = "SELECT SQL_CALC_FOUND_ROWS leaderboard.status_id,
 
 $pagination = new Pagination($connection=$db->get_connection(), $sql=$sql, $rows_per_page=50, $num_adjacent=3);
 $result = $pagination->get_result();
-$leaderboard = new LeaderBoard($result);
-include('./html/leaderboard.html');
-$js->set_js_var('tweets', $leaderboard->get_status_id_json());
+$nodboard = new NodBoard($result);
+include('./html/nodboard.html');
+$js->set_js_var('tweets', $nodboard->get_status_id_json());
 
 ?>
