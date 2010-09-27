@@ -32,6 +32,12 @@ switch ($route) {
     $head_title="SlothNod - Nod Board";
     include('./nodboard.php');
     break;
+    
+  case 'yesterday':
+    $head_title="SlothNod - Nod Board";
+    include('./yesterday.php');
+    break;
+
 
   case 'redirect':
     include('./redirect.php');

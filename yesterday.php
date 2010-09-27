@@ -9,19 +9,19 @@ if (isset($_GET['p'])) {
 } else {
 	$page = 1;
 }
-$sql = "SELECT SQL_CALC_FOUND_ROWS leaderboard.status_id,
-		leaderboard.text,
-		leaderboard.post_date,
-                leaderboard.leaderboard_date,
-                leaderboard.anonymous,
-		leaderboard.user_id,
-		leaderboard.username,
-		leaderboard.img_url FROM leaderboard ORDER BY leaderboard.leaderboard_date DESC";
+$sql = "SELECT SQL_CALC_FOUND_ROWS yesterday_board.status_id,
+		yesterday_board.text,
+		yesterday_board.post_date,
+                yesterday_board.leaderboard_date,
+                yesterday_board.anonymous,
+		yesterday_board.user_id,
+		yesterday_board.username,
+		yesterday_board.img_url FROM yesterday_board ORDER BY yesterday_board.leaderboard_date DESC";
 
-$pagination = new Pagination($connection=$db->get_connection(), $sql=$sql, $rows_per_page=50, $num_adjacent=3);
+$pagination = new Pagination($connection=$db->get_connection(), $sql=$sql, $rows_per_page=50, $num_adjacent=3, $page_url_name='p', $url_base='yesterday');
 $result = $pagination->get_result();
 $nodboard = new NodBoard($result);
-include('./html/nodboard.html');
+include('./html/yesterday.html');
 $js->set_js_var('tweets', $nodboard->get_status_id_json());
 
 ?>
