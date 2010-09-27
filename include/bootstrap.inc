@@ -16,7 +16,7 @@ function init() {
   date_default_timezone_set('UTC');
   $db = new mysql();
   $js = new JavaScript();
-  $session = new Session();
+  $session = new Session($gc_maxlifetime=SESSION_TIMEOUT, $salt=SESSION_SALT);
 
   if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
