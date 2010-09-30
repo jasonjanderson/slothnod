@@ -48,6 +48,29 @@ $sql .= "CREATE VIEW IF NOT EXISTS next_leaderboard AS
   AND user.followers > 0 
   AND status.on_leaderboard = 0;";
 
+$sql .= "CREATE OR REPLACE VIEW most_nodded AS 
+  SELECT status.id AS status_id, 
+  status.user_id, 
+  status.text, 
+  status.post_date, 
+  status.on_leaderboard, 
+  status.leaderboard_date, 
+  user.img_url, 
+  user.following, 
+  user.followers, 
+  user.username, 
+  COUNT(favorite.status_id) AS nodded, 
+  (unix_timestamp(utc_date()) - unix_timestamp(status.leaderboard_date)) AS anonymous 
+  FROM status 
+  JOIN user 
+  ON status.user_id = user.id 
+  JOIN favorite 
+  ON status.id = favorite.status_id 
+  GROUP BY status.id 
+  HAVING on_leaderboard = true 
+  ORDER BY nodded DESC 
+  LIMIT 100;";
+
 $db->query($sql);
 
 

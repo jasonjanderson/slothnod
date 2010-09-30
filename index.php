@@ -38,6 +38,11 @@ switch ($route) {
     include('./yesterday.php');
     break;
 
+  case 'mostnodded':
+    $head_title="Most Nodded - SlothNod";
+    include('./mostnodded.php');
+    break;
+
 
   case 'redirect':
     include('./redirect.php');
