@@ -19,22 +19,22 @@ ob_start();
 switch ($route) {
 
   case 'index':
-    $head_title="SlothNod - Nod Board";
+    $head_title="Nod Board - SlothNod";
     include('./nodboard.php');
     break;
 
   case 'about':
-    $head_title="SlothNod - About";
+    $head_title="About - SlothNod";
     include('./html/about.html');
     break;
 
   case 'nodboard':
-    $head_title="SlothNod - Nod Board";
+    $head_title="Nod Board - SlothNod";
     include('./nodboard.php');
     break;
     
   case 'yesterday':
-    $head_title="SlothNod - Nod Board";
+    $head_title="Nod Board - SlothNod";
     include('./yesterday.php');
     break;
 
@@ -44,6 +44,7 @@ switch ($route) {
     break;
 
   case 'signin':
+    $head_title="Sign in - SlothNod";
     include('./html/signin.html');
     break;
 
