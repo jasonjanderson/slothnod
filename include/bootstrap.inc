@@ -13,6 +13,7 @@ function init() {
 
   init_maintenance_mode();
   init_error_reporting(STATE);
+  init_header();
   date_default_timezone_set('UTC');
   $db = new mysql();
   $js = new JavaScript();
@@ -45,6 +46,9 @@ function init_maintenance_mode() {
   }
 }
 
+function init_header() {
+  header('P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+}
 
 init();
 
