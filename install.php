@@ -30,12 +30,12 @@ $sql .= "CREATE VIEW IF NOT EXISTS yesterday_board AS
   AND (unix_timestamp(utc_date()) - unix_timestamp(status.leaderboard_date)) < 86400 
   AND (unix_timestamp(utc_date()) - unix_timestamp(status.leaderboard_date)) > 0;";
 
-$sql .= "CREATE VIEW IF NOT EXISTS next_leaderboard AS 
+$sql .= "CREATE OR REPLACE VIEW next_leaderboard AS 
   SELECT favorite.status_id, 
   COUNT(favorite.status_id) AS favorite_count, 
   user.followers, 
   user.following, 
-  ((user.following + user.followers) * 0.005) AS sloth_form, 
+  (user.followers * 0.00666) AS sloth_form, 
   status.on_leaderboard 
   FROM favorite 
   JOIN status 
