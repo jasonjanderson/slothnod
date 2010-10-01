@@ -1,5 +1,3 @@
-var NUM_AVATAR = 15;
-
 function expand_avatar(tweet_id, avatar) {
   var i = 0;
   $.each(avatar, function(k, v) {
@@ -24,7 +22,7 @@ function toggle_avatar(tweet_id, avatar) {
 
 function format_avatar(username, url, expand_avatar) {
   var img = $("<img/>").attr("src", url).attr("title", username);
-  var link = $("<a>").attr("href", "http://twitter.com/"+username);
+  var link = $("<a>").attr("href", "http://twitter.com/"+username).attr("target", "_blank");
   if (expand_avatar == true) {
     link.attr("class", "expand-avatar");
   }
@@ -39,18 +37,16 @@ function collapse_avatar(tweet_id) {
   return;
 }
 
-function list_avatar(tweet_id, avatar, num) {
-  var i = 0;
+function list_avatar(tweet_id, avatar) {
   $.each(avatar, function(k, v) {
-    if (i == num) return;
-    i++;
     format_avatar(k, v, false).prependTo($("div#avatar-container_"+tweet_id));
   });
 }
 
-function init_avatar(num) {
+function init_avatar() {
   $.each(tweets, function(k, v) {
-      list_avatar(v, eval('avatar_'+v), num);
+/*      list_avatar(v, eval('avatar_'+v), num);*/
+      $('div#avatar-container_'+v).hide();
   });
 }
 
@@ -70,3 +66,7 @@ function swap_fav_image(tweet_id) {
   $("a#fav_"+tweet_id).replaceWith(img);
 }
 
+function show_avatar(tweet_id) {
+  $('a#show_avatar_'+tweet_id).hide();
+  $('div#avatar-container_'+tweet_id).show('fast', function() { list_avatar(tweet_id, eval('avatar_'+tweet_id));});
+}

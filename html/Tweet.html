@@ -6,24 +6,28 @@ $js->set_js_var('avatar_' . $this->status_id, $this->get_avatar_json());
 
 <div class="tweet">
   <div class="user-info">
-    <a href="<?php print 'http://twitter.com/' . $this->get_username(); ?>" title="<?php print $this->get_username(); ?>"><img src="<?php print $this->get_img_url(); ?>"></a>
+    <a href="<?php print 'http://twitter.com/' . $this->get_username(); ?>" title="<?php print $this->get_username(); ?>">
+      <img src="<?php print $this->get_img_url(); ?>">
+    </a>
   </div>
   <div class="tweet-text">
     <?php print $this->text; ?>
   </div>
-  <?php if (User::is_logged_in()) { ?>
- <div class="tweet-controls">
-   <?php if ($this->favorited($user)) { ?>
-   <img class="fav-img" src="./images/star_yellow.png" alt="favorite">
-   <?php } else { ?>
-  <a id="fav_<?php print $this->status_id; ?>" onclick="create_favorite(<?php print $this->status_id; ?>); return false;"><img class="fav-img" src="./images/star_grey.png" height="16" width="16" alt="favorite"></a>
-  <?php } ?>
-</div>
-  <?php } ?>
- <div class="avatar-container" id="avatar-container_<?php print $this->status_id; ?>">
-    <?php if (sizeof($this->get_avatar_array()) > AVATAR_PER_TWEET) { ?>
-      <a id="more_<?php print $this->status_id; ?>" onclick="toggle_avatar(<?php print $this->status_id; ?>, avatar_<?php print $this->status_id; ?>); return false;" href="#">More</a>
-    <?php } ?>
+  <div class="tweet-controls">
+    <a id="show_avatar_<?php print $this->status_id; ?>" href=#" onclick="show_avatar(<?php print $this->status_id; ?>); return false;">
+      <?php print sizeof($this->get_avatar_array()); ?> nods
+    </a>
+    <?php if (User::is_logged_in()) { ?>
+      <?php if ($this->favorited($user)) { ?>
+        <img class="fav-img" src="./images/star_yellow.png" alt="favorite">
+      <?php } else { ?>
+        <a id="fav_<?php print $this->status_id; ?>" onclick="create_favorite(<?php print $this->status_id; ?>); return false;">
+          <img class="fav-img" src="./images/star_grey.png" height="16" width="16" alt="favorite">
+        </a>
+      <?php }
+          } ?>
+  </div>
+  <div class="avatar-container" id="avatar-container_<?php print $this->status_id; ?>">
   </div>
   <span class="" title="<?php print $this->get_post_date_pretty(); ?> GMT">
     Blurted by <a href="http://twitter.com/<?php print $this->get_username(); ?>">@<?php print $this->get_username(); ?></a> <?php print $this->get_post_date_fuzzy(); ?>
