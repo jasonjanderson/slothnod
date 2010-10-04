@@ -8,8 +8,7 @@ if (isset($_REQUEST['denied'])) {
 /* If the oauth_token is old redirect to the connect page. */
 
 if (isset($_REQUEST['oauth_token']) && $_SESSION['oauth_token'] !== $_REQUEST['oauth_token']) {
-/*  $_SESSION['oauth_status'] = 'oldtoken';
-*/
+ $_SESSION['oauth_status'] = 'oldtoken';
   $session->stop();
   header('Location: ./');
 }
@@ -31,21 +30,25 @@ $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oau
 
 /* If method is set change API call made. Test is called by default. */
 $userinfo = $connection->get('account/verify_credentials');
-$user = new User(
-  $id = $userinfo->{'id'},
-  $username = $userinfo->{'screen_name'},
-  $followers = $userinfo->{'followers_count'},
-  $following = $userinfo->{'friends_count'},
-  $img_url = $userinfo->{'profile_image_url'},
-  $oauth_token = $access_token['oauth_token'],
-  $oauth_secret = $access_token['oauth_token_secret']
-);
-
-if (!User::valid_user($user)) {
-  include('./html/deny_user.html');
+if (isset($userinfo->{'error'})) {
+  include('./html/oauth_error.html');
 } else {
-  User::db_add($user);
-  $session->regenerate_id();
-  $_SESSION['user'] = $user;
-  header('Location: ./');
+  $user = new User(
+    $id = $userinfo->{'id'},
+    $username = $userinfo->{'screen_name'},
+    $followers = $userinfo->{'followers_count'},
+    $following = $userinfo->{'friends_count'},
+    $img_url = $userinfo->{'profile_image_url'},
+    $oauth_token = $access_token['oauth_token'],
+    $oauth_secret = $access_token['oauth_token_secret']
+  );
+
+  if (!User::valid_user($user)) {
+    include('./html/deny_user.html');
+  } else {
+    User::db_add($user);
+    $session->regenerate_id();
+    $_SESSION['user'] = $user;
+    header('Location: ./');
+  }
 }
