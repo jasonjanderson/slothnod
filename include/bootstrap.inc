@@ -3,22 +3,24 @@ require_once('./include/mysql.inc');
 require_once('./include/JavaScript.inc');
 require_once('./include/Session.inc/');
 require_once('./include/User.inc');
-
+require_once('./include/url.inc');
 
 function init() {
   global $db;
   global $js;
   global $session;
   global $user;
+  global $url;
 
   init_maintenance_mode();
   init_error_reporting(STATE);
-  init_header();
   date_default_timezone_set('UTC');
   $db = new mysql();
   $js = new JavaScript();
   $session = new Session($gc_maxlifetime=SESSION_TIMEOUT, $salt=SESSION_SALT);
+  $url = new URL();
 
+  init_header();
   if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
   }
@@ -47,7 +49,10 @@ function init_maintenance_mode() {
 }
 
 function init_header() {
-  header('P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+  header('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM TST"');
+  header('Content-Type: text/html; charset=utf-8');
+
+  //header('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"');
 }
 
 init();
