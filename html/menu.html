@@ -1,11 +1,11 @@
 <?php require_once("./include/menu.php"); ?>
 <div id="centeredmenu">
   <ul>
-    <?php print get_menu_item($title="Nod Board", $link="./", $active="index"); ?>
-    <?php print get_menu_item($title="Yesterday", $link="./yesterday", $active="yesterday"); ?>
-    <?php print get_menu_item($title="Most Nodded", $link="./mostnodded", $active="mostnodded"); ?>
-    <?php print get_menu_item($title="About", $link="./about", $active="about"); ?>
+    <?php print get_menu_item($title="Nod Board", $link="/", $active="index"); ?>
+    <?php print get_menu_item($title="Yesterday", $link="/yesterday", $active="yesterday"); ?>
+    <?php //print get_menu_item($title="Most Nodded", $link="/mostnodded", $active="mostnodded"); ?>
+    <?php print get_menu_item($title="About", $link="/about", $active="about"); ?>
     <?php print get_menu_item($title="Blog", $link="http://slothnod.org/talk", $active="", $new_window=true); ?>
-    <?php print get_menu_item($title="Join / Sign in", $link="./signin", $active="signin"); ?>
+    <?php print get_menu_item($title="Join / Sign in", $link="/signin", $active="signin"); ?>
   </ul>
 </div>
