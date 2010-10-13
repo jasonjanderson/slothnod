@@ -10,6 +10,15 @@ Options +FollowSymLinks
   ErrorDocument 404 "The requested file favicon.ico was not found."
 </Files>
 
+<FilesMatch "\.(inc|php)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+<FilesMatch "index\.php$">
+  Order allow,deny
+  Allow from all
+</FilesMatch>
+
 # Set the default handler.
 DirectoryIndex index.php
 
