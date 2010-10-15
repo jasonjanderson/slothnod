@@ -6,9 +6,7 @@ global $head_title;
 
 $route = 'index';
 if (isset($_GET['route'])) {
-  $url_array = $url->get_url_array();
   $route = $url_array[0];
-
 }
 
 ob_start();

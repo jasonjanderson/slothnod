@@ -11,6 +11,7 @@ function init() {
   global $session;
   global $user;
   global $url;
+  global $url_array;
 
   init_maintenance_mode();
   init_error_reporting(STATE);
@@ -19,6 +20,7 @@ function init() {
   $js = new JavaScript();
   $session = new Session($gc_maxlifetime=SESSION_TIMEOUT, $salt=SESSION_SALT);
   $url = new URL();
+  $url_array = $url->get_url_array();
 
   init_header();
   if (isset($_SESSION['user'])) {
