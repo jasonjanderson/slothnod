@@ -12,7 +12,7 @@ $sql= "CREATE TABLE IF NOT EXISTS `session_data` (
 PRIMARY KEY  (`session_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;";
 
-$sql .= "CREATE VIEW IF NOT EXISTS yesterday_board AS 
+$sql .= "CREATE OR REPLACE VIEW yesterday_board AS 
   SELECT status.id AS status_id,
   status.text,
   status.post_date,
@@ -35,7 +35,7 @@ $sql .= "CREATE OR REPLACE VIEW next_leaderboard AS
   COUNT(favorite.status_id) AS favorite_count, 
   user.followers, 
   user.following, 
-  (user.followers * 0.00666) AS sloth_form, 
+  " . SLOTH_FORMULA . " AS sloth_form, 
   status.on_leaderboard 
   FROM favorite 
   JOIN status 
