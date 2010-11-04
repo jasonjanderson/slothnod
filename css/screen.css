@@ -4,7 +4,7 @@ body {
 	border:0;			/* This removes the border around the viewport in old versions of IE */
 	width:100%;
 	background:#fff;
-	min-width:600px;    	/* Minimum width of layout - remove line if not required */
+	min-width:1024px;    	/* Minimum width of layout - remove line if not required */
 					/* The min-width property does not work in old versions of Internet Explorer */
 }
 
@@ -168,4 +168,5 @@ background:#4195DD;
 background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4195DD), to(#003C82));
 background:-moz-linear-gradient(0% 90% 90deg, #003C82, #4195DD);
 cursor:pointer;
-}
+
+div.clear { clear:both; }
