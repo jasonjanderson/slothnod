@@ -33,7 +33,7 @@ switch ($route) {
     break;
     
   case 'yesterday':
-    $head_title="Nod Board - SlothNod";
+    $head_title="Yesterday - SlothNod";
     include('./yesterday.php');
     break;
 
@@ -63,6 +63,10 @@ switch ($route) {
 
   case 'create_favorite':
     include('./create_favorite.php');
+    break;
+
+  case 'nodder':
+    include('./nodder.php');
     break;
 
   default:
