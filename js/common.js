@@ -62,7 +62,7 @@ function create_favorite(tweet_id) {
 }
 
 function swap_fav_image(tweet_id) {
-  var img = $("<img/>").attr("src", "./images/star_yellow.png").addClass("fav-img");
+  var img = $("<img/>").attr("src", "/images/star_yellow.png").addClass("fav-img");
   $("a#fav_"+tweet_id).replaceWith(img);
 }
 

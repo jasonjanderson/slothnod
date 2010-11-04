@@ -3,19 +3,34 @@ div.tweet {
   border-style:solid;
   border-width:thin;
   border-color:#F4F4F4;
+  height:100%;
+  clear:both;
+  width:100%
+  position:relative;
+  overflow:hidden;
 }
-div.user-info { float:left; width:60px; }
-div.user-info a img { overflow:hidden; height:45px; width:45px; }
+div.user-info { float:left; width:60px; position:relative;}
+div.user-info a img { height:45px; width:45px; padding:0px 0px 10px 0px; }
 div.tweet-text {
   font-size:1.5em;
-  width:100%;
+  float:left;
+  position:relative;
+  width:90%;
+  padding:0px 0px 10px 0px;
 }
-div.anonymous-tweet-text {
-  padding: 0px 0px 2px 60px;
+ul.tweet-controls { 
+  float:right; 
+  list-style-type: none;
+  width:5%
 }
-div.tweet-controls { float:right; }
+ul.tweet-controls li {
+  padding:10px 0px 0px 0px;
+  list-style-type: none;
+  text-align:right;
+}
+div.tweet-footer { clear:both; }
 a img.fav-img { cursor: pointer; }
 img.fav-img { overflow:hidden; height:16px; width:16px; }
-div.avatar-container { padding: 0px 0px 2px 65px; clear:both; }
+div.avatar-container { padding: 10px 0px 0px 65px; clear:both; }
 div.avatar-container a img { overflow:hidden; height:30px; width:30px; }
-
+div.anonymous-tweet div.avatar-container { padding: 0px 0px 2px 0px; clear:both; }
