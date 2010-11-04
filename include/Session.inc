@@ -50,6 +50,10 @@ class Session
 
     }
 
+    function __destruct() {
+      session_write_close();
+    }
+
     /**
      *  Deletes all data related to the session
      *
@@ -75,17 +79,18 @@ class Session
      *  @return void
      */
     function regenerate_id() {
-        // saves the old session's id
         $old_id= session_id();
 
-        // regenerates the id
-        // this function will create a new session, with a new id and containing the data from the old session
-        // but will not delete the old session
         session_regenerate_id();
 
-        // because the session_regenerate_id() function does not delete the old session,
-        // we have to delete it manually
-        $this->destroy($old_id);
+        $new_id = session_id();
+        $result = @mysql_query("
+            UPDATE 
+            " . $this->table . " 
+            SET session_id = '".mysql_real_escape_string($new_id)."' 
+            WHERE session_id = '".mysql_real_escape_string($old_id)."';"
+        );
+
     }
 
     /**
