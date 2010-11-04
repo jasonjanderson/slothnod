@@ -19,7 +19,7 @@ $js->set_js_var('avatar_' . $this->status_id, $this->get_avatar_json());
         </li>
   </ul>
   <div height="100%" class="user-info">
-    <a href="<?php print 'http://twitter.com/' . $this->get_username(); ?>" title="<?php print $this->get_username(); ?>"><img src="<?php print $this->get_img_url(); ?>"></a>
+    <a href="<?php print 'http://twitter.com/' . $this->get_username(); ?>" title="<?php print $this->get_username(); ?>" target="_blank"><img src="<?php print $this->get_img_url(); ?>"></a>
   </div>
   <div class="tweet-text">
     <?php print $this->text; ?>
