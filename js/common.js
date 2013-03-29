@@ -1,72 +1,100 @@
-function expand_avatar(tweet_id, avatar) {
-  var i = 0;
-  $.each(avatar, function(k, v) {
-    if (i < NUM_AVATAR) {
-      i++;
-      return;
-    }
-    format_avatar(k, v, true).prependTo($("div#avatar-container_"+tweet_id));
-  });
-  $("a#more_"+tweet_id).text("Less");
-  return;
-}
-
-function toggle_avatar(tweet_id, avatar) {
-  if ($('div#avatar-container_'+tweet_id+' a.expand-avatar').length == 0) {
-    expand_avatar(tweet_id, avatar);
-  } else {
-    collapse_avatar(tweet_id);
-  }
-  return;
-}
-
-function format_avatar(username, url, expand_avatar) {
+function formatAvatar(username, url) {
   var img = $("<img/>").attr("src", url).attr("title", username);
-  var link = $("<a>").attr("href", "http://twitter.com/"+username).attr("target", "_blank");
-  if (expand_avatar == true) {
-    link.attr("class", "expand-avatar");
-  }
+  var link = $("<a>").attr("href", "/nodders/"+username)
   img.appendTo(link);
   return link;
 }
  
 
-function collapse_avatar(tweet_id) {
-  $('div#avatar-container_'+tweet_id+' a.expand-avatar').remove();
-  $("a#more_"+tweet_id).text("More");
-  return;
-}
-
-function list_avatar(tweet_id, avatar) {
+function listAvatar(tweetId, avatar) {
   $.each(avatar, function(k, v) {
-    format_avatar(k, v, false).prependTo($("div#avatar-container_"+tweet_id));
+    formatAvatar(k, v).prependTo($("div#noddedimgs_"+tweetId));
   });
 }
 
-function init_avatar() {
-  $.each(tweets, function(k, v) {
-/*      list_avatar(v, eval('avatar_'+v), num);*/
-      $('div#avatar-container_'+v).hide();
-  });
+function initNodderImgs() {
+  $('div.noddedimgs').hide();
 }
 
-function create_favorite(tweet_id) {
+function favoriteAction(tweetId) {
+  if ($('a#nodbtn_'+tweetId).hasClass('nod')) {
+    AJAXcreateFavorite(tweetId);
+    $('a#nodbtn_'+tweetId).removeClass('nod');
+    $('a#nodbtn_'+tweetId).addClass('nodded');
+  } else {
+    AJAXdestroyFavorite(tweetId);
+    $('a#nodbtn_'+tweetId).removeClass('nodded');
+    $('a#nodbtn_'+tweetId).addClass('nod');
+  }
+}
+
+function createFollow(userId) {
+  var r = confirm('Are you sure you want to follow this user?');
+  if (r == true) {
+    AJAXcreateFollow(userId);
+  }
+}
+
+
+function retweet(tweetId) {
+  var r = confirm('Are you sure you want to retweet this blurt?');
+  if (r == true) {
+    AJAXretweet(tweetId);
+  }
+}
+
+function AJAXcreateFavorite(tweetId) {
   $.ajax({
     type: "GET",
-    url: "create_favorite",
-    data: "id="+tweet_id,
+    url: "/create_favorite/"+tweetId,
     success: function(msg){
-      swap_fav_image(tweet_id);
+      postAuthAction(msg);
     }
   });
 }
 
-function swap_fav_image(tweet_id) {
+function AJAXdestroyFavorite(tweetId) {
+  $.ajax({
+    type: "GET",
+    url: "/destroy_favorite/"+tweetId,
+    success: function(msg){
+      postAuthAction(msg);
+    }
+  });
+}
+
+function AJAXcreateFollow(userId) {
+  $.ajax({
+    type: "GET",
+    url: "/create_follow/"+userId,
+    success: function(msg){
+      postAuthAction(msg);
+    }
+  });
+}
+
+
+function AJAXretweet(tweetId) {
+  $.ajax({
+    type: "GET",
+    url: "/retweet/"+tweetId,
+    success: function(msg){
+      postAuthAction(msg);
+    }
+  });
+}
+
+function postAuthAction(msg) {
+  if (msg == 'signin') {
+    $(location).attr('href', '/signin');
+  }
+}
+
+function swap_nod_image(tweet_id) {
   var img = $("<img/>").attr("src", "/images/star_yellow.png").addClass("fav-img");
   $("a#fav_"+tweet_id).replaceWith(img);
 }
-
-function show_avatar(tweet_id) {
-  $('a#show_avatar_'+tweet_id).hide();
-  $('div#avatar-container_'+tweet_id).show('fast', function() { list_avatar(tweet_id, eval('avatar_'+tweet_id));});
+function showNodders(tweetId) {
+  $('a#shownodders_'+tweetId).hide();
+  $('div#noddedimgs_'+tweetId).show('fast', function() { listAvatar(tweetId, eval('nodders_'+tweetId));});
 }

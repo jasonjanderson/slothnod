@@ -1,62 +1,72 @@
 <?php
-require_once('./include/mysql.inc');
-require_once('./include/JavaScript.inc');
-require_once('./include/Session.inc/');
-require_once('./include/User.inc');
-require_once('./include/url.inc');
+require_once('./config.php');
 
-function init() {
-  global $db;
-  global $js;
-  global $session;
-  global $user;
-  global $url;
-  global $url_array;
-
-  init_maintenance_mode();
-  init_error_reporting(STATE);
-  date_default_timezone_set('UTC');
-  $db = new mysql();
-  $js = new JavaScript();
-  $session = new Session($gc_maxlifetime=SESSION_TIMEOUT, $salt=SESSION_SALT);
-  $url = new URL();
-  $url_array = $url->get_url_array();
-
-  init_header();
-  if (isset($_SESSION['user'])) {
-    $user = $_SESSION['user'];
-  }
+function __autoload($classname) {
+  require_once(DOCUMENT_ROOT . '/include/' . strtolower($classname) . '.inc');
 }
 
-function init_error_reporting($state) {
-  switch ($state) {
-    case 'production':
-      error_reporting(0);
-      @ini_set('display_errors', 0);
-      break;
+class Bootstrap {
 
-    case 'development':
-      error_reporting(E_ALL);
-      @ini_set('display_errors', 1);
+  public static $_instance = null;
+
+  public function __construct() { }
+
+  public function __destruct() { }
+
+  public function init_minimal() {
+    global $js;
+    global $session;
+
+    $this->init_maintenance_mode();
+    $this->init_error_reporting(STATE);
+    date_default_timezone_set('UTC');
+    MySQL::connect($host=DB_HOST, $user=DB_USER, $password=DB_PASSWORD, $database=DB_NAME);
+    Cache::connect($host='localhost');
+    URL::init();
+    $session = new Session($gc_maxlifetime=SESSION_TIMEOUT);
+    $js = new JavaScript();
+    $this->init_header();
   }
-}
 
-function init_maintenance_mode() {
-  if (IN_MAINTENANCE_MODE) {
-    if (!isset($_GET['bypass'])) {
-      include('./html/maintenance.html');
-      exit;
+  public function init_error_reporting($state) {
+    switch ($state) {
+      case 'production':
+        error_reporting(0);
+        @ini_set('display_errors', 0);
+        break;
+
+      case 'development':
+        error_reporting(E_ALL);
+        @ini_set('display_errors', 1);
+        break;
     }
   }
+
+  public function init_maintenance_mode() {
+    if (IN_MAINTENANCE_MODE) {
+      if (!isset($_GET['bypass'])) {
+        include('./html/maintenance.html');
+        exit;
+      }
+    }
+  }
+  public function init_header() {
+    if (preg_match('/rv:1\.(([1-8]|9pre|9a|9b[0-4])\.[0-9.]+).*Gecko/', $_SERVER['HTTP_USER_AGENT'])) {
+        header('Content-type: application/xhtml+xml');
+    }
+  }
+
+  public static function init_twitter_api() {
+    TwitterAPI::init(CONSUMER_KEY, CONSUMER_SECRET);
+  }
+
+  public static function get_instance() {
+    if (!(self::$_instance)) {
+      self::$_instance = new self;
+    }
+    return self::$_instance;
+  }
+
 }
-
-function init_header() {
-  header('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM TST"');
-  header('Content-Type: text/html; charset=utf-8');
-
-  //header('P3P: CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"');
-}
-
-init();
 
 ?>

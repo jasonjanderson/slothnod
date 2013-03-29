@@ -1,32 +1,27 @@
-<div id="leaderboard">
-  <?php print $nodboard->render(); ?>
-</div>
-<div class="pagination">
-  <ul id="pagination-clean">
-  <?php /*print $pagination->render_full(
-    $css_class_first_enabled=NULL,
-    $css_class_first_disabled=NULL,
-    $css_class_previous_enabled='previous',
-    $css_class_previous_disabled='previous-off',
-    $css_class_current=NULL,
-    $css_class_next_enabled='next',
-    $css_class_next_disabled='next-off',
-    $css_class_last_enabled=NULL,
-    $css_class_last_disabled=NULL);*/ ?>
-
-<?php print $pagination->render(
-    $css_class_previous_enabled='previous',
-    $css_class_previous_disabled='previous-off',
-    $css_class_current='active',
-    $css_class_next_enabled='next',
-    $css_class_next_disabled='next-off'); ?>
-</ul>
+<article id="boardheader">
+<p>Nod Board</p>
+</article>
+<?php if ($total_rows == 0) { include('./html/emptyboard.html'); } ?>
+<?php $nodboard->render(); ?>
+<div id="page_nav">
+  <ul>
+  <?php 
+    print $pagination->render(
+      $num_adjacent=2,
+      $css_class_previous_enabled=null,
+      $css_class_previous_disabled=null,
+      $css_class_current='active',
+      $css_class_next_enabled=null,
+      $css_class_next_disabled=null); 
+       ?>
+  </ul>
 </div>
 
 <script type="text/javascript">
   $(document).ready(function() {
-      init_avatar();
+      initNodderImgs();
   }
 );
 </script>
+<?php echo JavaScript::get_all_variables(); ?>
 

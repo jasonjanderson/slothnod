@@ -1,0 +1,37 @@
+<?php
+$user = $this->get_user();
+$favorites = $this->get_favorites();
+$favorites_array = $favorites->get_img_url_array();
+JavaScript::set_variable('nodders_' . $this->get_id(), json_encode($favorites_array)); 
+?>
+<article>
+  <div class="left_anon">
+    <div class="tweet">
+      <span class="tweet_text"><?php echo nl2br($this->get_text()); ?><span>
+    </div>
+    <div class="info">
+      <span class="author">Blurted <?php echo Date::datetime_to_fuzzy($this->get_post_date()); ?></span>
+      <span class="nods">
+        <a id="shownodders_<?php echo $this->get_id(); ?>" href="#" onclick="showNodders('<?php echo $this->get_id(); ?>'); return false;">
+          <?php echo count($favorites_array); ?> nods
+        </a>
+      </span>
+      <div class="noddedimgs" id="noddedimgs_<?php echo $this->get_id(); ?>" >
+      </div>
+    </div>
+  </div>
+
+  <div class="right_anon">
+    </span>
+    <span class="buttons">
+      <?php if (Auth::is_logged_in() && $favorites->user_favorited(Auth::get_current_user())) { ?>
+      <a id="nodbtn_<?php echo $this->get_id(); ?>" class="nodded" title="Un-Nod" href="#" 
+        onclick="favoriteAction('<?php echo $this->get_id(); ?>'); return false;">Nod</a>
+      <?php } else { ?>
+      <a id="nodbtn_<?php echo $this->get_id(); ?>" class="nod" title="Nod" href="#" 
+        onclick="favoriteAction('<?php echo $this->get_id(); ?>'); return false;">Nod</a>
+      <?php } ?>
+      <a title="Retweet" href="#" class="retweet" onclick="retweet('<?php echo $this->get_id(); ?>'); return false;">Retweet</a>
+    </span>
+  </div>
+</article>    

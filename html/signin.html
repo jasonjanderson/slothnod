@@ -1,48 +1,67 @@
-<div float="center">
-        <p>
-        Welcome. Slothnod is a Twitter content aggregator of blurts selected by members of its virtual, proto-quasi-town in the innerwebz ether. Slothnod is different from previous Twitter favorite aggegators or &quot;star&quot; sites:
-        </p>
-        <ul>
-          <li>
-            It is intended for bona fide humans, alive or dead, with less than 31,013 followers (mmm...palindrome).
-          </li>
-          <li>
-            Membership is voluntary (opt-in) and continued (opt-out) by your choice. 
-          </li>
-          <li>
-            All blurts on SlothNod are anonymous for 1 day.
-          </li>
-          <li>
-            Appearance of a blurt on SlothNod is based on this simple math: 
-            <br>Number of Followers x .00666 = Number of Nods needed <i>from fellow Slothnodders</i> to make it on the <a href="/">Nod Board</a>.
-          </li>
-          <li>
-            All blurts containing @replies, #hashtags, @mentions, or links are filtered out.
-          </li>
-          <li>
-            SlothNod is NC-17 and up. It&#39;s not for children or prudes. No words are banned.
-          </li>
-        </ul>
-        <p>
-          Sign in with Twitter to join and have fun.
-        </p>
-        <p>
-        <a class="button" href="/redirect">Sign in with Twitter</a>
-        </p>
-
-        <ul>
-          <li> Slothnod is not responsible for the content of an individual&#39;s blurt.
-          </li>
-          <li> The only data we fetch from Twitter is your favorites and follower count.
-          </li>
-          <li> We will never tweet or follow on your behalf.
-          </li>
-          <li> We cannot see your Twitter password.
-          </li>
-          <li> We will never read your DMs.
-          </li>
-          <li> You may leave SlothNod and revoke access to your account at any time <a href="http://twitter.com/account/connections" target="_blank">via Twitter&#39;s connections page</a>.
-          </li>
-        </ul>
-</div>
-
+<article>
+  <p>
+    Welcome. Slothnod is a Twitter content aggregator of blurts selected by members of its virtual, proto-quasi-town in the innerwebz ether. 
+    Slothnod is different from previous Twitter favorite aggegators or &quot;star&quot; sites:
+  </p>
+  <ul>
+    <li>
+      Membership is voluntary (opt-in) and continued (opt-out) by your choice. 
+    </li>
+    <li>
+      All blurts on SlothNod are anonymous for 1 day.
+    </li>
+    <li>
+    Appearance of a blurt on the <a href="/">Nod Board</a> is based on this simple math: 
+    <br> A Slothnodder's blurt will appear on the Nod Board when s/he receives (# of followers * <?php echo SLOTHNOD_FORMULA_MULTIPLIER; ?>) or <?php echo SLOTHNOD_FORMULA_MIN_NODS; ?> nods (whichever is greater) on 
+    a blurt from <i>from fellow Slothnodders</i>.
+    </li>
+    <li>
+      All blurts containing @replies, or links are filtered out.
+    </li>
+    <li>
+      SlothNod is NC-17 and up. It&#39;s not for children or prudes. No words are banned.
+    </li>
+  </ul>
+  <p>
+    Sign in with Twitter to join and have fun.
+  </p>
+  <p>
+    <a id="signin-button" class="button" href="<?php echo TwitterAPI::get_authorize_url(); ?>">Sign in with Twitter</a>
+  </p>
+  <br />
+  <b>If this is the first time you are logging into SlothNod, your nodder page will be empty until the next time the blurt 
+    collector runs (every half hour)</b>
+  <h3>SlothNod language</h3> 
+  <ul> 
+    <li> 
+      Blurt  =  A tweet.
+    </li> 
+    <li> 
+      Nod  =  A star or favorite on a tweet.
+    </li> 
+    <li> 
+      Nodder / SlothNodder  =  A member of SlothNod.
+    </li> 
+  </ul> 
+  <h3>Fine Print</h3>
+  <ul>
+    <li> 
+      Slothnod is not responsible for the content of an individual&#39;s blurt.
+    </li>
+    <li>
+      The only data we fetch from Twitter is your favorites and follower count.
+    </li>
+    <li>
+      We will never tweet or follow on your behalf.
+    </li>
+    <li>
+      We cannot see your Twitter password.
+    </li>
+    <li>
+      We will never read your DMs.
+    </li>
+    <li> 
+    You may leave SlothNod and revoke access to your account at any time <a href="http://twitter.com/account/connections" target="_blank">via Twitter&#39;s connections page</a>.
+    </li>
+  </ul>
+</article>

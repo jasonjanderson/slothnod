@@ -1,8 +1,11 @@
 <div id="header-login">
-<?php if (User::is_logged_in()) { ?>
+  <?php 
+  if (Auth::is_logged_in()) { 
+    $user = Auth::get_current_user();
+  ?>
 Signed in as <a href="http://twitter.com/<?php echo $user->get_username(); ?>">@<?php echo $user->get_username(); ?></a>  (<a href="/signout">Sign out</a>)
 <?php } else { ?>
-<a href="/signin"><img src="images/signin.png" alt="Sign in with Twitter"/></a>
+<a href="/signin"><img src="/images/signin.png" alt="Sign in with Twitter"/></a>
 <?php } ?>
 </div>
 <div id="header-logo">

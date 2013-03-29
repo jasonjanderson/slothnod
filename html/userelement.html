@@ -1,0 +1,123 @@
+<?php 
+$user = Auth::get_current_user();
+?>
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title><?php echo Page::get_title(); ?></title>
+<meta name="description" content="A Twitter content aggregator of anonymous words selected by members of its virtual proto quasi town in the innerwebz ether." />
+<meta name="title" content="<?php echo Page::get_title(); ?>" />
+<link rel="index" href="http://www.slothnod.com/" title="Slothnod" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="/css/screen.css" media="screen" />
+<!--[if lt IE 9]>  
+  <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
+<![endif]-->  
+<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+</head>
+
+<body>
+
+<div id="top">
+  <ul>
+    <li><a href="http://www.twitter.com/slothnod">Follow Us</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="http://www.slothnod.org/talk" target="_blank">Blog</a></li>
+    <?php if ($user) { ?>
+    <li><a href="/signout">Sign Out</a></li>
+    <?php } else { ?>
+    <li><a href="/signin">Sign In</a></li>
+    <?php } ?>
+  </ul>
+</div>
+
+<div id="wrap">
+  <header>
+    <span id="logo">
+      <a href="/">
+        <img src="/assets/images/thesloth.png" alt="The Sloth" />
+      </a>
+    </span>
+    <h1><a href="/">Slothnod</a></h1>
+    <?php 
+    if ($user) { 
+    ?>    
+    <span id="twitter">
+      <a href="/nodders/<?php echo $user->get_username(); ?>">
+      <img src="<?php echo $user->get_img_url(); ?>" class="user" />
+    </a>
+      <a class="signin" href="/nodders/<?php echo $user->get_username(); ?>">Signed in as<br /><?php echo $user->get_username(); ?></a>
+      <a href="/signout" class="signout">Sign Out</a>
+    </span>
+    <?php } else { ?>
+    <span id="twitter">
+      <a href="/signin">
+      <img src="/assets/images/twitterbird.png" alt="Sign in with Twitter" />
+    </a>
+    <a class="signin" href="/signin">
+      Sign in with<br />Twitter
+    </a>
+  </span>
+    <?php } ?>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="/">Nod Board</a></li>
+      <li><a href="/yesterday">Yesterday</a></li>
+      <li><a href="/heavynods">Heavy Nods</a></li>
+      <?php if ($user) { ?>
+      <li><a href="/nodders/<?php echo $user->get_username(); ?>">My Page</a></li>
+      <?php } ?>
+    </ul>
+  </nav>
+    
+  <div id="content">
+    <article>
+    <div class="userelement">
+      <img src="http://a0.twimg.com/profile_images/1209656128/BeefTongue_Vilified_normal.png" />
+      <a href="/nodders/joesmith_really">
+      @joesmith_really
+    </a>
+    </div>
+    <div class="userelement">
+      <a href="/nodders/joesmith_really">
+      @joesmith_really
+    </a>
+<img src="http://a0.twimg.com/profile_images/1209656128/BeefTongue_Vilified_normal.png" />
+    </div>
+    <div class="userelement">
+      <a href="/nodders/joesmith_really">
+      @joesmith_really
+    </a>
+<img src="http://a0.twimg.com/profile_images/1209656128/BeefTongue_Vilified_normal.png" />
+    </div>
+</article>
+  </div>
+  <footer>
+    <ul>
+      <li>&copy; 2010 SlothNod</li>
+      <li>Concept by <a href="http://anyman.com" target="_blank">anyman</a></li>
+      <li>SlothNod by <a href="http://www.twitter.com/nectro" target="_blank">@nectro</a></li>
+      <li>Design by <a href="http://www.joelrottier.com" target="_blank">Joel Rottier</a></li>
+    </ul>
+  </footer>
+</div>
+
+</body>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16992431-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</html>

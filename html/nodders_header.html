@@ -1,0 +1,35 @@
+<?php
+global $nodder;
+
+?>
+<article class="user_page">
+  <div id="col_left">
+    <a href="/nodders/<?php echo $nodder->get_username(); ?>">
+    <img src="<?php echo $nodder->get_img_url(); ?>" class="user" />
+  </a>
+    <div class="user_info">
+      <span class="username">
+        <a href="">
+          @<?php echo $nodder->get_username(); ?>
+        </a>
+      </span><br />
+      <span class="buttons"><a href="http://twitter.com/<?php echo $nodder->get_username(); ?>" title="View @<?php echo $nodder->get_username(); ?> on Twitter" class="follow" target="about:blank"></a></span>
+    </div>
+  </div>
+  <div id="col_mid">
+    <p>
+    Sloth Number: <?php echo $nodder->get_sloth_number(); ?><br />
+    Followers: <?php echo $nodder->get_followers(); ?><br />
+    Following: <?php echo $nodder->get_following(); ?><br />
+  </div>
+  <div id="col_right">
+    <ul>
+      <li><a href="<?php echo '/nodders/' . $nodder->get_username(); ?>">Recent Blurts</a></li>
+      <li><a href="<?php echo '/nodders/' . $nodder->get_username() . '/mostnods'; ?>">Top Blurts</a></li>
+    </ul>
+    <ul>
+      <li><a href="<?php echo '/nodders/' . $nodder->get_username() . '/nodded'; ?>">Nods Given</a></li>
+    </ul>
+  </div>
+</article>
+

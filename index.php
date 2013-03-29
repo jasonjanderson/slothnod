@@ -1,80 +1,81 @@
 <?php
 require_once('./include/bootstrap.inc');
 
-global $route;
-global $head_title;
+$bootstrap = Bootstrap::get_instance();
+$bootstrap->init_minimal();
 
-$route = 'index';
-if (isset($_GET['route'])) {
-  $route = $url_array[0];
-}
-
-ob_start();
-include('./html/header.html');
-$header = ob_get_contents();
-ob_end_clean();
-
-ob_start();
+$route = URL::pop();
 switch ($route) {
-
-  case 'index':
-    $head_title="Nod Board - SlothNod";
-    include('./nodboard.php');
+  case '':
+    $title="Nod Board - SlothNod";
+    Page::render('./nodboard.php', './html/page.html', $title);
     break;
 
   case 'about':
-    $head_title="About - SlothNod";
-    include('./html/about.html');
+    $title="About - SlothNod";
+    $page = './html/about.html';
+    Page::render('./html/about.html', './html/page.html', $title);
     break;
 
-  case 'nodboard':
-    $head_title="Nod Board - SlothNod";
-    include('./nodboard.php');
-    break;
-    
   case 'yesterday':
-    $head_title="Yesterday - SlothNod";
-    include('./yesterday.php');
+    $title="Yesterday - SlothNod";
+    Page::render('./yesterday.php', './html/page.html', $title);
     break;
 
-  case 'mostnodded':
-    $head_title="Most Nodded - SlothNod";
-    include('./mostnodded.php');
+  case 'heavynods':
+    $title="Heavy Nods - SlothNod";
+    Page::render('./heavynods.php', './html/page.html', $title);
     break;
-
 
   case 'redirect':
-    include('./redirect.php');
+    $page = './redirect.php';
     break;
 
   case 'signin':
-    $head_title="Sign in - SlothNod";
-    include('./html/signin.html');
+    $title="Sign in - SlothNod";
+    Page::render('./signin.php', './html/page.html', $title);
     break;
 
-
   case 'callback':
-    include('./callback.php');
+    Page::render('./callback.php');
     break;
     
   case 'signout':
-    include('./signout.php');
+    Page::render('./signout.php');
     break;
 
   case 'create_favorite':
-    include('./create_favorite.php');
+    Page::render('./create_favorite.php');
     break;
 
-  case 'nodder':
-    include('./nodder.php');
+  case 'destroy_favorite':
+    Page::render('./destroy_favorite.php');
+    break;
+
+  case 'retweet':
+    Page::render('./retweet.php');
+    break;
+
+
+  case 'nodders':
+    include('./nodders.php');
+    break;
+
+  case 'create_follow':
+    Page::render('./create_follow.php');
+    break;
+
+  case 'cachestats':
+    include('./cachestats.php');
     break;
 
   default:
-    include('./nodboard.php');
+    if (!is_numeric($route)) {
+      URL::redirect('/');
+    }
+    URL::reset();
+    $title="Nod Board - SlothNod";
+    Page::render('./nodboard.php', './html/page.html', $title);
 }
-$body_contents = ob_get_contents();
-ob_end_clean();
-
-include('./html/page.html');
 
 ?>

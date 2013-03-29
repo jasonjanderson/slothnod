@@ -1,0 +1,32 @@
+<?php 
+include('./html/nodders_header.html');
+?>
+<article id="boardheader">
+  <p>Nods Given</p>
+</article>
+<?php if ($total_rows == 0) { include('./html/emptyboard.html'); } ?>
+<?php
+$nodboard->render(); 
+?>
+<div id="page_nav">
+  <ul>
+  <?php 
+    print $pagination->render(
+      $num_adjacent=2,
+      $css_class_previous_enabled=null,
+      $css_class_previous_disabled=null,
+      $css_class_current='active',
+      $css_class_next_enabled=null,
+      $css_class_next_disabled=null); 
+       ?>
+  </ul>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      initNodderImgs();
+  }
+);
+</script>
+<?php echo JavaScript::get_all_variables(); ?>
+

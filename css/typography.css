@@ -1,0 +1,52 @@
+article h1 { font-size: 1.4em; margin: 5px 6px 8px 0px; font-weight: bold; color: #000; background-color: transparent; }
+article h2 { font-size: 1.3em; color: #4A5C2A; font-weight: bold; margin: 16px 6px 8px 0px; background-color: transparent; }
+article h3 { font-size: 1.3em; font-weight: bold; margin: 16px 6px 8px 0px; color: #000; background-color: transparent; }
+article h4 { font-size: 1.2em; font-weight: bold; margin: 16px 6px 0px 0px; color: #4A5C2A; background-color: transparent; } 
+article h5 { font-size: 1.2em; font-weight: bold; margin: 16px 6px 0px 0px; color: #000; background-color: transparent; } 
+article h6 { font-size: 1em; font-weight: bold; margin: 16px 6px 0px 0px; color: #544239; background-color: transparent; } 
+
+article p { margin: 14px 5px 2px 0px;  line-height: 140%; color: #000; background-color: transparent; }
+
+article table { border: none; margin: 6px 3px 12px 0px; color: #000; background-color: transparent; }
+article tr td { border: none; padding: 1px 4px; color: #000; background-color: transparent;}
+article th, caption { border: none; padding: 2px 4px; color: #000; font-weight: bold; background-color: transparent;}
+	
+article form, fieldset { margin: 0 auto; padding: 10px 10px 10px 0px; color: #000; background-color: transparent; }
+
+article blockquote { margin: 10px 20px 10px 20px; line-height: normal; color: #000; background-color: transparent; }
+
+article strong, b { font-weight: bold; background-color: transparent; } 
+
+article em, i { font-style: italic; background-color: transparent; }
+
+article u { text-decoration: underline; background-color: transparent; }
+
+article abbr, acronym, ins, dfn { text-decoration: none; background-color: transparent; }
+
+article cite { font-style: normal; background-color: transparent; }
+
+article code { font-family: courier, monospace; font-size: small; background-color: transparent; }
+
+article del { text-decoration: line-through; background-color: transparent; }
+
+article ins { text-decoration: underline; background-color: transparent; }
+
+article ul li { list-style-type: disc; margin-left: 46px; line-height: normal; padding:0 0 5px;  }
+article ul li ul li { list-style-type: circle; margin-left: 16px; line-height: normal; padding:0 0 5px;  }
+
+article ol li { list-style-type: decimal; margin-left: 46px; line-height: normal; padding:0 0 5px; }
+article ol li ol li { list-style-type: lower-alpha; margin: 0px 0px 0px 22px; padding:0 0 5px;  }
+
+article dl, dt { margin: 12px 0px 0px 12px; line-height: 120%; font-weight: bold; background-color: transparent; }  
+article dl, dd  { margin: 0px 0px 0px 12px; font-weight: normal; line-height: normal; }
+
+article dl, dt { margin: 12px 0px 0px 12px; line-height: 120%; font-weight: bold; background-color: transparent; }  
+article dl, dd  { margin: 12px 0px 0px 12px; font-weight: normal; line-height: normal; }
+
+article address { margin-left: 12px; text-decoration: none; background-color: transparent; }
+
+article a:link { text-decoration: underline;  outline:none; color: #4A5C2A; } 
+article a:visited { text-decoration: underline; outline:none; color: #4A5C2A; } 
+article a:target { text-decoration: underline; outline:none; color: #4A5C2A; }
+article a:hover { text-decoration: none; background-color: transparent;  outline: none; color: #4A5C2A; } 
+article a:active { text-decoration: none; outline:none; color: #4A5C2A; } 

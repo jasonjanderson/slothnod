@@ -1,5 +1,4 @@
 <?php
-
-$session->stop();
-header('Location: ./');
+Auth::logout();
+header('Location: /');
 ?>

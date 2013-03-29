@@ -11,10 +11,11 @@ Options +FollowSymLinks
 </Files>
 
 <FilesMatch "\.(inc|php)$">
-    Order deny,allow
-    Deny from all
+  Order deny,allow
+  Deny from all
+  Allow from 192.168.0.0/255.255.0.0
 </FilesMatch>
-<FilesMatch "index\.php$">
+<FilesMatch "(index|install)\.php$">
   Order allow,deny
   Allow from all
 </FilesMatch>
