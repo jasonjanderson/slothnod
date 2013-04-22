@@ -5,6 +5,6 @@ Back in 2010 I developed a Twitter content aggregator.  It contained a leaderboa
 
 SlothNod launched on September 18th, 2010 and had 200+ registered users in the first 2 days.
 
-[http://i.imgur.com/M0kmJf4.png]
+[SlothNod]:http://i.imgur.com/M0kmJf4.png
 
-[http://i.imgur.com/dH3Cl2G.png]
+[SlothNod User Page]:http://i.imgur.com/dH3Cl2G.png
